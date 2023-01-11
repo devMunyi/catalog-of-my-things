@@ -1,4 +1,4 @@
-require './item.rb'
+require './item'
 class Author
   attr_accessor :id, :first_name, :last_name, :items
 
