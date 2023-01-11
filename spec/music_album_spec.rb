@@ -1,7 +1,7 @@
 require_relative '../MusicAlbum_Genre/music_album'
 
 describe MusicAlbum do
-  let(:music_album) { MusicAlbum.new '23-12-2022', 'Strings', true}
+  let(:music_album) { MusicAlbum.new '23-12-2022', 'Strings', true }
 
   describe '#new' do
     it 'music_album should be the instance of MusicAlbum' do
