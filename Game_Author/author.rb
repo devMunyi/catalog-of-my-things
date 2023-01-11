@@ -1,4 +1,4 @@
-require_relative '/item.rb'
+require './item.rb'
 class Author
   attr_accessor :id, :first_name, :last_name, :items
 
