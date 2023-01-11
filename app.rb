@@ -74,7 +74,6 @@ class App
 
     run
   end
-  
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/CyclomaticComplexity
 
