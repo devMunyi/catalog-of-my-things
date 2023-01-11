@@ -1,1 +1,3 @@
-puts 'To be implemented by Samuel'
+class Label
+  puts 'To be implemented in the next pull request'
+end
