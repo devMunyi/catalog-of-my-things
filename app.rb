@@ -101,6 +101,36 @@ class App
     puts 'to be implemented by Zuhaib'
   end
 
+  def list_authors
+    if File.empty?('./data_files/authors.json')
+      puts 'Auhtors list is empty❌.'
+    end
+    file = File.open('./data_files/auauthors.json')
+    file_data = file.read
+    data = JSON.parse(file_data)
+    return unless data
+
+    data.each_with_index { |hash,key| puts "#{key + 1}-[Author👨🏽‍🎓] First Name: #{hash['first_name']} | Last Name: #{hash['last_name']}"}
+  end
+
+  def add_author
+    print "Enter First Name: "
+    first_name = gets.chomp
+    print "Enter Last Name: "
+    last_name = gets.chomp
+    author = Author.new(first_name,last_name) 
+    File.new('./data_files/authors.json', 'w+') unless File.exist?('./data_files/authors.json')
+    if File.empty?('./data_files/authors.json')
+      authors = []
+    else
+      data = File.read('./data_files/authors.json').split
+      authors = JSON.parse(data.join)
+      @authors << games
+    end
+    authors.push({ 'first_name' => author.first_name, 'last_name' => author.last_name })
+    File.write('./data_files/authors.json', JSON.generate(authors))
+  end
+
   def list_games
     if File.empty?('./data_files/games.json')
       puts 'Games list is empty❌.'
@@ -111,10 +141,6 @@ class App
     return unless data
 
     data.each_with_index { |hash,key| puts "#{key + 1}-[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']} Publish date: #{hash['publish_date']}" }
-  end
-
-  def list_authors
-    puts 'to be implemented by Kene'
   end
 
   def add_game
