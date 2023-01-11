@@ -46,6 +46,8 @@ class App
     handle_option(selected_option)
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
   def handle_option(option)
     case option
     when 1
@@ -72,6 +74,9 @@ class App
 
     run
   end
+  
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_books
     puts 'to be implemented by Samuel'
