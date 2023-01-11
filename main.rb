@@ -1,7 +1,7 @@
-require_relative 'app'
+require_relative 'console_ui'
 
 def main
-  app = App.new
+  app = ConsoleUI.new
   app.run
 end
 
