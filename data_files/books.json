@@ -1,1 +1,1 @@
-[{"publisher":"Ruby","publish_date":null,"cover_state":"good","archived":false},{"publisher":"HTML","publish_date":null,"cover_state":"bad","archived":false}]
+[{"id":737,"publisher":"Apex","date":"2020","cover_state":"bad","archived":false,"label":{"id":644,"title":"CSS","color":"CSS"},"author":{"id":151,"first_name":"Sam","last_name":"Munyi"},"genre":{"id":724,"name":"Code"}}]
