@@ -9,9 +9,9 @@ class ConsoleUI
   end
 
   def run
-    puts '-' * 90
+    puts '-' * 70
     puts 'Welcome to Catalog of My Things'
-    puts '-' * 90
+    puts '-' * 70
     puts 'Please Choose an Option:
   1 - List all books
   2 - List all music albums

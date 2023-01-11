@@ -74,9 +74,9 @@ class App
     else
       books_count = books.count
       puts books_count > 1 ? "#{books_count} Books Available" : "#{books_count} Book Available "
-      puts '-' * 90
+      puts '-' * 70
       @books.each_with_index do |book, i|
-        puts "#{i + 1} | Title: #{book.label.title} | Author: #{book.author.first_name} #{book.author.last_name} | ",
+        puts "#{i + 1} - Title: #{book.label.title} | Author: #{book.author.first_name} #{book.author.last_name} | ",
              " Publisher: #{book.publisher} | Date: #{book.date} | Cover State: #{book.cover_state}"
       end
     end
