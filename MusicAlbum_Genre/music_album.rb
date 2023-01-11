@@ -10,7 +10,6 @@ class MusicAlbum < Item
     @genre = genre
   end
 
-  
   private
 
   def can_be_archived?
