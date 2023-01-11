@@ -38,11 +38,20 @@ class Storage
   end
 
   def load_books
-    return unless File.exist?('./data_files/books.json')
+    targe_file = './data_files/books.json'
+    return unless File.exist?(targe_file)
 
-    books = JSON.parse(File.read('./data_files/books.json'))
+    books = JSON.parse(File.read(targe_file))
     books.each do |book|
       new_book = Book.new(book['publisher'], book['date'], book['cover_state'])
+      new_label = Label.new(book['label']['title'], book['label']['color'])
+      new_author = Author.new(book['author']['first_name'], book['author']['last_name'])
+      new_genre = Genre.new(book['genre']['name'])
+
+      new_book.label = new_label
+      new_book.author = new_author
+      new_book.genre = new_genre
+
       @app.books.push(new_book)
     end
   end

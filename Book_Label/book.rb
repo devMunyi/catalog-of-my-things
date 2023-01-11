@@ -1,24 +1,33 @@
 require_relative '../item'
 
 class Book < Item
-  attr_accessor :publisher, :cover_state
+  attr_accessor :publisher, :cover_state, :label, :author, :genre, :date
 
   def initialize(publisher, date, cover_state, archived: false)
     super(date, archived: archived)
     @publisher = publisher
     @cover_state = cover_state
+    @date = date
   end
-
-  # def self.list_books(books)
-
-  # end
 
   def as_json()
     {
+      id: @id,
       publisher: @publisher,
-      date: @publish_date,
+      date: @date,
       cover_state: @cover_state,
-      archived: @archived
+      archived: @archived, label: {
+        id: label.id,
+        title: label.title,
+        color: label.color
+      }, author: {
+        id: author.id,
+        first_name: author.first_name,
+        last_name: author.last_name
+      }, genre: {
+        id: genre.id,
+        name: genre.name
+      }
     }
   end
 

@@ -23,12 +23,49 @@ class App
   end
 
   def add_book
-    publisher = get_user_input('Enter Book Title: ')
-    date = get_user_input('Enter Year of Publication: ')
-    cover_state = get_user_input('Enter Book Cover State [good/bad]: ')
+    author = add_author
+    label = add_label('Book')
+    genre = add_genre('Book\'s')
 
-    @books.push(Book.new(publisher, date, cover_state))
-    puts 'Book created successfully'
+    publisher = get_user_input('Who is the publisher?: ')
+    date = get_user_input('What is the year of publication?: ')
+    cover_state = get_user_input('What is Book Cover State? [good/bad]: ').downcase
+
+    puts "PUBLISHER => #{publisher}"
+    puts "DATE => #{date}"
+
+    book = Book.new(publisher, date, cover_state)
+    label.add_item(book)
+    genre.add_item(book)
+    author.add_item(book)
+
+    @books.push(book)
+    @labels.push(label)
+    @genres.push(genre)
+    @authors.push(author)
+
+    puts ''
+    puts "Book #{label.title} by #{author.first_name} #{author.last_name} was created successfully"
+  end
+
+  def add_genre(item_type)
+    print "#{item_type} genre: "
+    genre_name = gets.chomp
+    Genre.new(genre_name)
+  end
+
+  def add_author
+    first_name = get_user_input('Enter Author\'s first name: ')
+    last_name = get_user_input('Enter Author\'s last name: ')
+    Author.new(first_name, last_name)
+  end
+
+  def add_label(item_type)
+    print "Title of the #{item_type}: "
+    title = gets.chomp
+    print "Color of the #{item_type}: "
+    color = gets.chomp
+    Label.new(title, color)
   end
 
   def list_books
@@ -36,10 +73,11 @@ class App
       puts 'There are no books available, add some...'
     else
       books_count = books.count
-      puts books_count > 1 ? "#{books_count} books Available" : "#{books_count} book Available "
-      puts '-' * 70
+      puts books_count > 1 ? "#{books_count} Books Available" : "#{books_count} Book Available "
+      puts '-' * 90
       @books.each_with_index do |book, i|
-        puts "#{i + 1} | Publisher: #{book.publisher} | Date: #{book.publish_date} | Cover State: #{book.cover_state}"
+        puts "#{i + 1} | Title: #{book.label.title} | Author: #{book.author.first_name} #{book.author.last_name} | ",
+             " Publisher: #{book.publisher} | Date: #{book.date} | Cover State: #{book.cover_state}"
       end
     end
   end
@@ -48,10 +86,11 @@ class App
     if @labels.empty?
       puts 'There are no labels available'
     else
-      puts "#{@labels.count} Available"
+      labels_count = labels.count
+      puts labels_count > 1 ? "#{labels_count} Labels Available" : "#{labels_count} Label Available "
+      puts '-' * 70
       @labels.each_with_index do |label, i|
-        puts "#{i + 1} Title : #{label.title}",
-             "   Publisher: #{label.color}"
+        puts "#{i + 1} | Title : #{label.title} | Color: #{label.color}"
       end
     end
   end

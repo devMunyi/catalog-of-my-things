@@ -1,7 +1,7 @@
 require_relative '../Book_Label/book'
 
 RSpec.describe Book do
-  let(:book) { Book.new 'Macmillan', 'Ok' }
+  let(:book) { Book.new 'Macmillan', '2021', 'good' }
 
   describe '#new' do
     it 'takes two parameters and return a book object' do
@@ -22,7 +22,7 @@ RSpec.describe Book do
 
   describe '#cover_state' do
     it 'returns the correct cover state' do
-      expect(book.cover_state).to eql('Ok')
+      expect(book.cover_state).to eql('good')
     end
 
     it 'sets cover state correctly' do
