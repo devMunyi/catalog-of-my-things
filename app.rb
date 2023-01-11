@@ -102,23 +102,23 @@ class App
   end
 
   def list_authors
-    if File.empty?('./data_files/authors.json')
-      puts 'Auhtors list is empty❌.'
-    end
+    puts 'Auhtors list is empty❌.' if File.empty?('./data_files/authors.json')
     file = File.open('./data_files/auauthors.json')
     file_data = file.read
     data = JSON.parse(file_data)
     return unless data
 
-    data.each_with_index { |hash,key| puts "#{key + 1}-[Author👨🏽‍🎓] First Name: #{hash['first_name']} | Last Name: #{hash['last_name']}"}
+    data.each_with_index do |hash, key|
+      puts "#{key + 1}-[Author👨🏽‍🎓] First Name: #{hash['first_name']} | Last Name: #{hash['last_name']}"
+    end
   end
 
   def add_author
-    print "Enter First Name: "
+    print 'Enter First Name: '
     first_name = gets.chomp
-    print "Enter Last Name: "
+    print 'Enter Last Name: '
     last_name = gets.chomp
-    author = Author.new(first_name,last_name) 
+    author = Author.new(first_name, last_name)
     File.new('./data_files/authors.json', 'w+') unless File.exist?('./data_files/authors.json')
     if File.empty?('./data_files/authors.json')
       authors = []
@@ -132,26 +132,27 @@ class App
   end
 
   def list_games
-    if File.empty?('./data_files/games.json')
-      puts 'Games list is empty❌.'
-    end
+    puts 'Games list is empty❌.' if File.empty?('./data_files/games.json')
     file = File.open('./data_files/games.json')
     file_data = file.read
     data = JSON.parse(file_data)
     return unless data
 
-    data.each_with_index { |hash,key| puts "#{key + 1}-[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']} Publish date: #{hash['publish_date']}" }
+    data.each_with_index do |hash, key|
+      puts "#{key + 1}-[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']}
+      Publish date: #{hash['publish_date']}"
+    end
   end
 
   def add_game
-    print "Enter 1 for multiplayer and 2 for single player: "
+    print 'Enter 1 for multiplayer and 2 for single player: '
     multiplayer = gets.chomp
-    multiplayer == 1 ? multiplayer = true: multiplayer = false
-    print "Enter the last played at date: "
+    multiplayer = multiplayer == 1
+    print 'Enter the last played at date: '
     last_played_at = gets.chomp
-    print "Enter published date: "
+    print 'Enter published date: '
     publish_date = gets.chomp
-    game = Game.new(multiplayer, last_played_at, publish_date) 
+    game = Game.new(multiplayer, last_played_at, publish_date)
     File.new('./data_files/games.json', 'w+') unless File.exist?('./data_files/games.json')
     if File.empty?('./data_files/games.json')
       games = []
@@ -161,7 +162,7 @@ class App
       @games << games
     end
     games.push({ 'multiplayer' => game.multiplayer, 'last_played_at' => game.last_played_at,
-                 'publish_date' => game.publish_date})
+                 'publish_date' => game.publish_date })
     File.write('./data_files/games.json', JSON.generate(games))
   end
 end
