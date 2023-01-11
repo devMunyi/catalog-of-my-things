@@ -1,12 +1,13 @@
 class Item
-  attr_reader :genre , :author, :label
+  attr_reader :genre, :author, :label
   attr_accessor :date
-  def initialize(date)
+
+  def initialize(date, archived: false)
     @id = Random.rand(1..1000)
     @publish_date = date
-    @archived = false
+    @archived = archived
   end
-  
+
   def genre=(genre)
     @genre = genre
     genre.items.push(self) unless genre.items.include?(self)
@@ -23,9 +24,9 @@ class Item
   end
 
   def move_to_archive
-    if can_be_archived?
-      @archived = true
-    end
+    return unless can_be_archived?
+
+    @archived = true
   end
 
   private
@@ -34,5 +35,4 @@ class Item
     current_year = Time.new.year
     current_year - Date.parse(@publish_date).year > 10
   end
-
 end

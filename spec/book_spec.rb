@@ -1,7 +1,7 @@
 require_relative '../book'
 
 RSpec.describe Book do
-  let(:book) {Book.new 'Title', 'Author'}
+  let(:book) { Book.new 'Title', 'Author' }
   # before :each do
   #   @book = Book.new 'Title', 'Author'
   # end
