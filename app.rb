@@ -102,7 +102,15 @@ class App
   end
 
   def list_games
-    puts 'to be implemented by Kene'
+    if File.empty?('./data_files/games.json')
+      puts 'Games list is empty❌.'
+    end
+    file = File.open('./data_files/games.json')
+    file_data = file.read
+    data = JSON.parse(file_data)
+    return unless data
+
+    data.each { |hash| puts "[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']} Publish date: #{hash['publish_date']}" }
   end
 
   def list_authors
@@ -110,6 +118,24 @@ class App
   end
 
   def add_game
-    puts 'to be implemented by Kene'
+    print "Enter 1 for multiplayer and 2 for single player: "
+    multiplayer = gets.chomp
+    multiplayer == 1 ? multiplayer = true: multiplayer = false
+    print "Enter the last played at date: "
+    last_played_at = gets.chomp
+    print "Enter published date: "
+    publish_date = gets.chomp
+    game = Game.new(multiplayer, last_played_at, publish_date) 
+    File.new('./data_files/games.json', 'w+') unless File.exist?('./data_files/games.json')
+    if File.empty?('./data_files/games.json')
+      games = []
+    else
+      data = File.read('./data_files/games.json').split
+      games = JSON.parse(data.join)
+      @games << games
+    end
+    games.push({ 'multiplayer' => game.multiplayer, 'last_played_at' => game.last_played_at,
+                 'publish_date' => game.publish_date})
+    File.write('./data_files/games.json', JSON.generate(games))
   end
 end
