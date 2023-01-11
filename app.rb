@@ -110,7 +110,7 @@ class App
     data = JSON.parse(file_data)
     return unless data
 
-    data.each { |hash| puts "[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']} Publish date: #{hash['publish_date']}" }
+    data.each_with_index { |hash,key| puts "#{key + 1}-[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']} Publish date: #{hash['publish_date']}" }
   end
 
   def list_authors
