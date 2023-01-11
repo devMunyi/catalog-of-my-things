@@ -12,13 +12,14 @@ class Book < Item
   def self.list_books(books)
     if books.empty?
       puts 'There are no books available, add some...'
-    else 
+    else
       puts "#{books.count} Available"
       books.each_with_index do |book, i|
         puts "#{i + 1} Title : #{book.label.title}",
-        "   Publisher: #{book.publisher} Cover State: #{cover_state}"
+             "   Publisher: #{book.publisher} Cover State: #{cover_state}"
       end
     end
+  end
 
   private
 
