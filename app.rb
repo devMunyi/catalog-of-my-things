@@ -4,7 +4,6 @@ require_relative './Game_Author/game'
 require_relative './Game_Author/author'
 require_relative './MusicAlbum_Genre/music_album'
 require_relative './MusicAlbum_Genre/genre'
-require_relative './storage'
 
 class App
   attr_accessor :books, :labels, :games, :authors, :genres, :music_albums
@@ -36,7 +35,6 @@ class App
     if @books.empty?
       puts 'There are no books available, add some...'
     else
-      p books
       books_count = books.count
       puts books_count > 1 ? "#{books_count} books Available" : "#{books_count} book Available "
       puts '-' * 70

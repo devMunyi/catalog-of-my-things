@@ -16,7 +16,7 @@ class Book < Item
   def as_json()
     {
       publisher: @publisher,
-      publish_date: @date,
+      date: @publish_date,
       cover_state: @cover_state,
       archived: @archived
     }
