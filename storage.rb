@@ -70,7 +70,6 @@ class Storage
     # end
   end
 
-
   def save_music_albums
     # return if @app.books.empty?
 
@@ -85,7 +84,7 @@ class Storage
     # books.each do |book|
     #   new_book = Book.new(book['title'], book['author'])
     #   @app.books.push(new_book)
-    #end
+    # end
   end
 
   def save_genres
@@ -102,7 +101,7 @@ class Storage
     # books.each do |book|
     #   new_book = Book.new(book['title'], book['author'])
     #   @app.books.push(new_book)
-    #end
+    # end
   end
 
   def save_games
@@ -119,7 +118,7 @@ class Storage
     # books.each do |book|
     #   new_book = Book.new(book['title'], book['author'])
     #   @app.books.push(new_book)
-    #end
+    # end
   end
 
   def save_authors
@@ -136,6 +135,6 @@ class Storage
     # books.each do |book|
     #   new_book = Book.new(book['title'], book['author'])
     #   @app.books.push(new_book)
-    #end
+    # end
   end
 end

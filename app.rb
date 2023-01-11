@@ -37,16 +37,17 @@ class App
       9) Add a game
       10) Exit'
 
-      print 'Option: '
-      selected_option = gets.chomp.to_i
+    print 'Option: '
+    selected_option = gets.chomp.to_i
 
-      # handle exit case
-      return exit_app if selected_option == 10
-      
-      handle_option(selected_option)
+    # handle exit case
+    return exit_app if selected_option == 10
+
+    handle_option(selected_option)
   end
 
-
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
   def handle_option(option)
     case option
     when 1
@@ -59,7 +60,7 @@ class App
       list_genres
     when 5
       list_labels
-    when 6 
+    when 6
       list_authors
     when 7
       add_book
@@ -73,7 +74,8 @@ class App
 
     run
   end
-
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def list_books
     puts 'to be implemented by Samuel'
@@ -98,7 +100,7 @@ class App
   def add_music_album
     puts 'to be implemented by Zuhaib'
   end
-  
+
   def list_games
     puts 'to be implemented by Kene'
   end
