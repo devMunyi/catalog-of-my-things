@@ -23,8 +23,12 @@
 
 > In this project, we created a console app that will help you to keep a record of different types of things you own: books, music albums, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files.
 
+[Project Presentation Video](https://drive.google.com/file/d/1yFpV2ZW-K-gqCwvZ5U8RDJLw1W-wodfO/view?usp=share_link)
+
 ## UML Diagram
 ![](https://github.com/microverseinc/curriculum-ruby/blob/main/group-capstone/images/catalog_of_my_things.png)
+
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
