@@ -93,7 +93,13 @@ bundle install
 To run the project, follow these instructions:
 
 - After Cloning this repo to your local machine.
-- To get it running in your terminal, run it in your IDE
+- To get it running on your machine, you may open the project on your IDE and open the terminal
+- On the terminal you can run:
+
+```
+ruby main.rb
+```
+- After, you can follow along the app and run the appropriate option from list to interact with it.
 
 ### Run tests
 
