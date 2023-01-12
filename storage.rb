@@ -106,17 +106,19 @@ class Storage
 
   def save_games
     return if @app.games.empty?
+
     games_json = @app.games.map(&:as_json)
     File.write('./data_files/games.json', JSON.dump(games_json))
   end
 
   def load_games
-      return unless File.exist?('./data_files/games.json')
-      games = JSON.parse(File.read('./data_files/games.json'))
-      games.each do |book|
-        new_game = Game.new(game['multiplayer'], game['last_played_at'])
-        @app.games.push(new_game)
-      end
+    return unless File.exist?('./data_files/games.json')
+
+    games = JSON.parse(File.read('./data_files/games.json'))
+    games.each do |game|
+      new_game = Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'])
+      @app.games.push(new_game)
+    end
   end
 
   def save_authors
