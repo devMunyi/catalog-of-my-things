@@ -1,5 +1,6 @@
 require_relative './app'
 require_relative './storage'
+
 class ConsoleUI
   def initialize
     @app = App.new

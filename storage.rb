@@ -31,43 +31,47 @@ class Storage
   end
 
   def save_books
-    # return if @app.people.empty?
+    return if @app.books.empty?
 
-    # people_json = @app.people.map(&:as_json)
-    # File.write('people.json', JSON.dump(people_json))
+    books = @app.books.map(&:as_json)
+    File.write('./data_files/books.json', JSON.dump(books))
   end
 
   def load_books
-    # handle case when people.json is not available (people.json)
-    # return unless File.exist?('people.json')
+    targe_file = './data_files/books.json'
+    return unless File.exist?(targe_file)
 
-    # people_json = JSON.parse(File.read('people.json'))
-    # people_json.each do |person|
-    #   if person['type'] == 'Student'
-    #     new_student = Student.new(person['age'], person['classroom'], person['name'], person['parent_permission'])
-    #     @app.people.push(new_student)
-    #   else
-    #     new_teacher = Teacher.new(person['age'], person['specialization'], person['name'])
-    #     @app.people.push(new_teacher)
-    #   end
-    # end
+    books = JSON.parse(File.read(targe_file))
+    books.each do |book|
+      new_book = Book.new(book['publisher'], book['date'], book['cover_state'])
+      new_label = Label.new(book['label']['title'], book['label']['color'])
+      new_author = Author.new(book['author']['first_name'], book['author']['last_name'])
+      new_genre = Genre.new(book['genre']['name'])
+
+      new_book.label = new_label
+      new_book.author = new_author
+      new_book.genre = new_genre
+
+      @app.books.push(new_book)
+    end
   end
 
   def save_labels
-    # return if @app.books.empty?
+    return if @app.labels.empty?
 
-    # books = @app.books.map(&:as_json)
-    # File.write('books.json', JSON.dump(books))
+    labels = @app.labels.map(&:as_json)
+    File.write('./data_files/labels.json', JSON.dump(labels))
   end
 
   def load_labels
-    # return unless File.exist?('books.json')
+    targe_file = './data_files/labels.json'
+    return unless File.exist?(targe_file)
 
-    # books = JSON.parse(File.read('books.json'))
-    # books.each do |book|
-    #   new_book = Book.new(book['title'], book['author'])
-    #   @app.books.push(new_book)
-    # end
+    labels = JSON.parse(File.read(targe_file))
+    labels.each do |label|
+      new_label = Label.new(label['title'], label['color'])
+      @app.labels.push(new_label)
+    end
   end
 
   def save_music_albums

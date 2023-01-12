@@ -1,27 +1,33 @@
-# require_relative '../Book_Label/book'
+require_relative '../Book_Label/book'
 
-# RSpec.describe Book do
-#   let(:book) { Book.new 'Title', 'Author' }
-#   # before :each do
-#   #   @book = Book.new 'Title', 'Author'
-#   # end
+RSpec.describe Book do
+  let(:book) { Book.new 'Macmillan', '2021', 'good' }
 
-#   describe '#new' do
-#     it 'takes two parameters and return a book object' do
-#       # @book.should be_an_instance_of Book
-#       expect(book).to be_an_instance_of Book
-#     end
-#   end
+  describe '#new' do
+    it 'takes two parameters and return a book object' do
+      expect(book).to be_an_instance_of Book
+    end
+  end
 
-#   describe '#title' do
-#     it 'returns the correct title' do
-#       expect(book.title).to eql('Title')
-#     end
-#   end
+  describe '#publisher' do
+    it 'returns the correct publisher' do
+      expect(book.publisher).to eql('Macmillan')
+    end
 
-#   describe 'author' do
-#     it 'returns the correct author' do
-#       expect(:book.author).to eql('Author')
-#     end
-#   end
-# end
+    it 'sets the publisher correctly' do
+      book.publisher = 'Apex'
+      expect(book.publisher).to eql('Apex')
+    end
+  end
+
+  describe '#cover_state' do
+    it 'returns the correct cover state' do
+      expect(book.cover_state).to eql('good')
+    end
+
+    it 'sets cover state correctly' do
+      book.cover_state = 'bad'
+      expect(book.cover_state).to eql('bad')
+    end
+  end
+end

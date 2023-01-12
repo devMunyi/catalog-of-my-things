@@ -1,24 +1,34 @@
 require_relative '../item'
 
 class Book < Item
-  attr_accessor :publisher, :cover_state
+  attr_accessor :publisher, :cover_state, :label, :author, :genre, :date
 
-  def initialize(publisher, cover_state)
-    super(date)
+  def initialize(publisher, date, cover_state, archived: false)
+    super(date, archived: archived)
     @publisher = publisher
     @cover_state = cover_state
+    @date = date
   end
 
-  def self.list_books(books)
-    if books.empty?
-      puts 'There are no books available, add some...'
-    else
-      puts "#{books.count} Available"
-      books.each_with_index do |book, i|
-        puts "#{i + 1} Title : #{book.label.title}",
-             "   Publisher: #{book.publisher} Cover State: #{cover_state}"
-      end
-    end
+  def as_json()
+    {
+      id: @id,
+      publisher: @publisher,
+      date: @date,
+      cover_state: @cover_state,
+      archived: @archived, label: {
+        id: label.id,
+        title: label.title,
+        color: label.color
+      }, author: {
+        id: author.id,
+        first_name: author.first_name,
+        last_name: author.last_name
+      }, genre: {
+        id: genre.id,
+        name: genre.name
+      }
+    }
   end
 
   private
