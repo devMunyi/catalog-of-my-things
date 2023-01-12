@@ -84,7 +84,7 @@ class Storage
   def load_music_albums
     target_file = './data_files/music_albums.json'
     return unless File.exist?(target_file)
-    
+
     music_albums = JSON.parse(File.read(target_file))
     music_albums.each do |album|
       new_album = MusicAlbum.new(album['publish_date'], album['name'], album['on_spotify'])
@@ -93,12 +93,11 @@ class Storage
       new_album.genre = new_genre
       @app.music_albums.push(new_album)
     end
-
   end
 
   def save_genres
     return if @app.genres.empty?
-    
+
     genres = @app.genres.map(&:as_json)
     File.write('./data_files/genres.json', JSON.dump(genres))
   end
@@ -106,13 +105,12 @@ class Storage
   def load_genres
     target_file = './data_files/music_albums.json'
     return unless File.exist?(target_file)
-    
+
     genres = JSON.parse(File.read(target_file))
     genres.each do |genre|
       new_genre = Genre.new(genre['genre']['name'])
       @app.genres.push(new_genre)
     end
-
   end
 
   def save_games

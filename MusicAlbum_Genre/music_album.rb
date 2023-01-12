@@ -8,7 +8,7 @@ class MusicAlbum < Item
     @name = name
     @on_spotify = on_spotify
   end
-  
+
   def as_json()
     {
       id: @id,
@@ -20,7 +20,7 @@ class MusicAlbum < Item
       }
     }
   end
-    
+
   private
 
   def can_be_archived?
