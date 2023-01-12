@@ -73,8 +73,10 @@ class App
       puts 'Sorry, there is not any Music Album in the list.'
     else
       # rubocop:disable Layout/LineLength
+      puts '-' * 70
       @music_albums.each_with_index do |album, i|
-        puts "#{i + 1}- Name: #{album.name}, on_Spotify: #{album.on_spotify}, Genre: #{album.genre.name}, Publish_Date: #{album.publish_date}"
+        puts "#{i + 1}- Name: #{album.name} | on_Spotify: #{album.on_spotify} | Genre: #{album.genre.name} | Publish_Date: #{album.publish_date}"
+        puts '-' * 70
       end
       # rubocop:enable Layout/LineLength
     end
@@ -84,8 +86,10 @@ class App
     if @genres.empty?
       puts 'Sorry, there is not any Genre in the list.'
     else
+      puts '-' * 70
       @genres.each_with_index do |genre, i|
         puts "#{i + 1}- Genre: #{genre.name}"
+        puts '-' * 70
       end
     end
   end
