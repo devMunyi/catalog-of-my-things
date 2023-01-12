@@ -8,7 +8,19 @@ class MusicAlbum < Item
     @name = name
     @on_spotify = on_spotify
   end
-
+  
+  def as_json()
+    {
+      id: @id,
+      publish_date: @publish_date,
+      name: @name,
+      on_spotify: @on_spotify, genre: {
+        id: genre.id,
+        name: genre.name
+      }
+    }
+  end
+    
   private
 
   def can_be_archived?
