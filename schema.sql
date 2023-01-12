@@ -8,10 +8,19 @@ DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS authors;
 
 -- genres Table
-
+CREATE TABLE genres(
+  id SERIAL NOT NULL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+)
 
 -- music_albums Table
-
+CREATE TABLE music_albums(
+  id SERIAL NOT NULL PRIMARY KEY,
+  publish_date DATE NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  on_spotify BOOLEAN NOT NULL,
+  archived BOOLEAN NOT NULL DEFAULT false 
+)
 
 -- games Table
 CREATE TABLE games(
