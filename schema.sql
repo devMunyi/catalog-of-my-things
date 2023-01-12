@@ -9,10 +9,13 @@ DROP TABLE IF EXISTS authors;
 
 -- genres Table
 
+
 -- music_albums Table
 
 
 -- games Table
+
+
 
 -- authors
 
@@ -28,7 +31,6 @@ CREATE TABLE books(
   cover_state VARCHAR(100) NOT NULL,
   archived BOOLEAN NOT NULL DEFAULT false 
 );
-
 
 -- labels Table
 CREATE TABLE labels(
