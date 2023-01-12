@@ -1,0 +1,23 @@
+[
+  {
+    "id": 820,
+    "publish_date": "2022",
+    "name": "Strings",
+    "on_spotify": true,
+    "genre": { "id": 417, "name": "Pop" }
+  },
+  {
+    "id": 358,
+    "publish_date": "2005",
+    "name": "Longs",
+    "on_spotify": false,
+    "genre": { "id": 410, "name": "Hiphop" }
+  },
+  {
+    "id": 271,
+    "publish_date": "2010",
+    "name": "Doom",
+    "on_spotify": true,
+    "genre": { "id": 193, "name": "Folk" }
+  }
+]

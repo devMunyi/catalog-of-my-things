@@ -1,0 +1,11 @@
+[
+  {
+    "id": 747,
+    "publisher": "Apex",
+    "date": "2019",
+    "cover_state": "good",
+    "archived": false,
+    "label": { "id": 426, "title": "CSS", "color": "Red" },
+    "author": { "id": 764, "first_name": "Sam", "last_name": "Munyi" }
+  }
+]
