@@ -7,6 +7,8 @@ require_relative './MusicAlbum_Genre/genre'
 require_relative './storage'
 
 class App
+  attr_accessor :books, :labels, :games, :authors, :genres, :music_albums
+
   def initialize
     @books = []
     @labels = []
@@ -102,67 +104,55 @@ class App
   end
 
   def list_authors
-    puts 'Auhtors list is empty❌.' if File.empty?('./data_files/authors.json')
-    file = File.open('./data_files/auauthors.json')
-    file_data = file.read
-    data = JSON.parse(file_data)
-    return unless data
-
-    data.each_with_index do |hash, key|
-      puts "#{key + 1}-[Author👨🏽‍🎓] First Name: #{hash['first_name']} | Last Name: #{hash['last_name']}"
+    if @authors.empty?
+      puts 'There are no authors available, add some...'
+    else
+      authors_count = authors.count
+      puts authors_count > 1 ? "#{authors_count} Authors Available" : "#{authors_count} Author Available "
+      puts '-' * 70
+      @authors.each_with_index do |author, i|
+        puts "#{i + 1} - Author: #{author.first_name} #{author.last_name}"
+      end
     end
+
+  end
+
+  def get_user_input(message)
+    print message
+    gets.chomp
   end
 
   def add_author
-    print 'Enter First Name: '
-    first_name = gets.chomp
-    print 'Enter Last Name: '
-    last_name = gets.chomp
+    first_name = get_user_input('Enter Author\'s first name: ')
+    last_name = get_user_input('Enter Author\'s last name: ')
     author = Author.new(first_name, last_name)
-    File.new('./data_files/authors.json', 'w+') unless File.exist?('./data_files/authors.json')
-    if File.empty?('./data_files/authors.json')
-      authors = []
-    else
-      data = File.read('./data_files/authors.json').split
-      authors = JSON.parse(data.join)
-      @authors << games
-    end
-    authors.push({ 'first_name' => author.first_name, 'last_name' => author.last_name })
-    File.write('./data_files/authors.json', JSON.generate(authors))
+    @authors << author
+    puts 'Author created successfully'
   end
 
   def list_games
-    puts 'Games list is empty❌.' if File.empty?('./data_files/games.json')
-    file = File.open('./data_files/games.json')
-    file_data = file.read
-    data = JSON.parse(file_data)
-    return unless data
-
-    data.each_with_index do |hash, key|
-      puts "#{key + 1}-[GAMES🎮] Multiplayer: #{hash['multiplayer']} | Last played date: #{hash['last_played_date']}
-      Publish date: #{hash['publish_date']}"
+    if @games.empty?
+      puts 'There are no games available, add some...'
+    else
+      games_count = games.count
+      puts games_count > 1 ? "#{games_count} Games Available" : "#{games_count} Game Available "
+      puts '-' * 70
+      @games.each_with_index do |game, i|
+        puts "#{i + 1} - Mutiplayer: #{game.multiplayer} | Last played: #{game.last_played_at}"
+      end
     end
   end
 
   def add_game
     print 'Enter 1 for multiplayer and 2 for single player: '
     multiplayer = gets.chomp
-    multiplayer = multiplayer == 1
+    multiplayer == 1 ? multiplayer = true : multiplayer = false
     print 'Enter the last played at date: '
     last_played_at = gets.chomp
     print 'Enter published date: '
     publish_date = gets.chomp
     game = Game.new(multiplayer, last_played_at, publish_date)
-    File.new('./data_files/games.json', 'w+') unless File.exist?('./data_files/games.json')
-    if File.empty?('./data_files/games.json')
-      games = []
-    else
-      data = File.read('./data_files/games.json').split
-      games = JSON.parse(data.join)
-      @games << games
-    end
-    games.push({ 'multiplayer' => game.multiplayer, 'last_played_at' => game.last_played_at,
-                 'publish_date' => game.publish_date })
-    File.write('./data_files/games.json', JSON.generate(games))
+    @games << game
+    puts "Game Added Successfully"
   end
 end

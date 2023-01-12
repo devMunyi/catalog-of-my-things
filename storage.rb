@@ -106,8 +106,8 @@ class Storage
 
   def save_games
     return if @app.games.empty?
-    games = @app.games.map(&:as_json)
-    File.write('./data_files/games.json', JSON.dump(games))
+    games_json = @app.games.map(&:as_json)
+    File.write('./data_files/games.json', JSON.dump(games_json))
   end
 
   def load_games
@@ -120,19 +120,19 @@ class Storage
   end
 
   def save_authors
-    # return if @app.books.empty?
+    return if @app.authors.empty?
 
-    # books = @app.books.map(&:as_json)
-    # File.write('books.json', JSON.dump(books))
+    authors_json = @app.authors.map(&:as_json)
+    File.write('./data_files/authors.json', JSON.dump(authors_json))
   end
 
   def load_authors
-    # return unless File.exist?('books.json')
+    return unless File.exist?('./data_files/authors.json')
 
-    # books = JSON.parse(File.read('books.json'))
-    # books.each do |book|
-    #   new_book = Book.new(book['title'], book['author'])
-    #   @app.books.push(new_book)
-    # end
+    authors = JSON.parse(File.read('./data_files/authors.json'))
+    authors.each do |author|
+      new_author = Author.new(author['first_name'], author['last_name'])
+      @app.authors.push(new_author)
+    end
   end
 end
