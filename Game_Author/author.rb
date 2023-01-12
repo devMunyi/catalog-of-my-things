@@ -14,4 +14,11 @@ class Author
     @items << item
     item.author = self
   end
+
+  def as_json
+    {
+      first_name: @first_name,
+      last_name: @last_name
+    }
+  end
 end

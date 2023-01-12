@@ -131,15 +131,55 @@ class App
     puts 'Music Album added successfully'
   end
 
-  def list_games
-    puts 'to be implemented by Kene'
+  def list_authors
+    if @authors.empty?
+      puts 'There are no authors available, add some...'
+    else
+      authors_count = authors.count
+      puts authors_count > 1 ? "#{authors_count} Authors Available" : "#{authors_count} Author Available "
+      puts '-' * 70
+      @authors.each_with_index do |author, i|
+        puts "#{i + 1} - Author: #{author.first_name} #{author.last_name}"
+      end
+    end
   end
 
-  def list_authors
-    puts 'to be implemented by Kene'
+  def get_user_input(message)
+    print message
+    gets.chomp
+  end
+
+  def add_author
+    first_name = get_user_input('Enter Author\'s first name: ')
+    last_name = get_user_input('Enter Author\'s last name: ')
+    author = Author.new(first_name, last_name)
+    @authors << author
+    puts 'Author created successfully'
+  end
+
+  def list_games
+    if @games.empty?
+      puts 'There are no games available, add some...'
+    else
+      games_count = games.count
+      puts games_count > 1 ? "#{games_count} Games Available" : "#{games_count} Game Available "
+      puts '-' * 70
+      @games.each_with_index do |game, i|
+        puts "#{i + 1} - Mutiplayer: #{game.multiplayer} | Last played: #{game.last_played_at}"
+      end
+    end
   end
 
   def add_game
-    puts 'to be implemented by Kene'
+    print 'Enter 1 for multiplayer and 2 for single player: '
+    multiplayer = gets.chomp
+    multiplayer = multiplayer == 1
+    print 'Enter the last played at date: '
+    last_played_at = gets.chomp
+    print 'Enter published date: '
+    publish_date = gets.chomp
+    game = Game.new(multiplayer, last_played_at, publish_date)
+    @games << game
+    puts 'Game Added Successfully'
   end
 end

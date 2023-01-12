@@ -26,7 +26,6 @@ class ConsoleUI
     puts ''
     print 'Option: '
     selected_option = gets.chomp.to_i
-
     # handle exit case
     return exit_app if selected_option == 10
 
@@ -63,7 +62,6 @@ class ConsoleUI
     else
       puts 'Invalid Choice! Try again'
     end
-
     run
   end
   # rubocop:enable Metrics/MethodLength
