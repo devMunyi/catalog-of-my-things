@@ -12,4 +12,11 @@ class Genre
     @items.push(item)
     item.genre = self
   end
+
+  def as_json()
+    {
+      id: @id,
+      name: @name
+    }
+  end
 end
