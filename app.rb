@@ -93,15 +93,42 @@ class App
   end
 
   def list_music_albums
-    puts 'to be implemented by Zuhaib'
+    if @music_albums.empty?
+      puts 'Sorry, there is not any Music Album in the list.'
+    else
+      # rubocop:disable Layout/LineLength
+      @music_albums.each_with_index do |album, i|
+        puts "#{i + 1}- Name: #{album.name}, on_Spotify: #{album.on_spotify}, Genre: #{album.genre.name}, Publish_Date: #{album.publish_date}"
+      end
+      # rubocop:enable Layout/LineLength
+    end
   end
 
   def list_genres
-    puts 'to be implemented by Zuhaib'
+    if @genres.empty?
+      puts 'Sorry, there is not any Genre in the list.'
+    else
+      @genres.each_with_index do |genre, i|
+        puts "#{i + 1}- Genre: #{genre.name}"
+      end
+    end
   end
 
   def add_music_album
-    puts 'to be implemented by Zuhaib'
+    print 'Album Name: '
+    name = gets.chomp
+    print 'Publish date: '
+    publish_date = gets.chomp
+    print 'Is this album on spotify?'
+    on_spotify = gets.chomp
+    on_spotify = %w[Y y YES yes].include?(on_spotify)
+    print 'Genre of the Album: '
+    genre = Genre.new(gets.chomp)
+    each_album = MusicAlbum.new(publish_date, name, on_spotify)
+    each_album.genre = genre
+    @genres.push(genre)
+    @music_albums.push(each_album)
+    puts 'Music Album added successfully'
   end
 
   def list_games
