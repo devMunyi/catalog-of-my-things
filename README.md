@@ -31,10 +31,9 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Client</summary>
   <ul>
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
-    <li><a href="https://www.ruby-lang.org/en/">PostgreSQL</a></li>
+    <li><a href="https://www.ruby-lang.org/en/">SQL</a></li>
     <li><a href="https://www.ruby-lang.org/en/">RSpec</a></li>
   </ul>
 </details>
