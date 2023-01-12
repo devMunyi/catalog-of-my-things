@@ -1,1 +1,11 @@
-[{"id":44,"publisher":"Apex","date":"2020","cover_state":"bad","archived":false,"label":{"id":961,"title":"CSS","color":"CSS"},"author":{"id":583,"first_name":"Sam","last_name":"Munyi"},"genre":{"id":834,"name":"Code"}},{"id":938,"publisher":"Sunny","date":"2020","cover_state":"good","archived":false,"label":{"id":666,"title":"Giant","color":"red"},"author":{"id":493,"first_name":"Sam","last_name":"Mun"},"genre":{"id":140,"name":"Horror"}},{"id":615,"publisher":"Fony","date":"2022","cover_state":"good","archived":false,"label":{"id":990,"title":"Fury","color":"blue"},"author":{"id":969,"first_name":"Sam","last_name":"dun"},"genre":{"id":133,"name":"thriller"}},{"id":799,"publisher":"fani","date":"1999","cover_state":"bad","archived":false,"label":{"id":130,"title":"we","color":"blue"},"author":{"id":752,"first_name":"as","last_name":"cs"},"genre":{"id":92,"name":"romance"}},{"id":873,"publisher":"fudi","date":"2000","cover_state":"bad","archived":false,"label":{"id":53,"title":"er","color":"red"},"author":{"id":937,"first_name":"qw","last_name":"we"},"genre":{"id":402,"name":"horror"}}]
+[
+  {
+    "id": 747,
+    "publisher": "Apex",
+    "date": "2019",
+    "cover_state": "good",
+    "archived": false,
+    "label": { "id": 426, "title": "CSS", "color": "Red" },
+    "author": { "id": 764, "first_name": "Sam", "last_name": "Munyi" }
+  }
+]

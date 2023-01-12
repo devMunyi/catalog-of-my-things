@@ -4,7 +4,6 @@ require_relative './Game_Author/game'
 require_relative './Game_Author/author'
 require_relative './MusicAlbum_Genre/music_album'
 require_relative './MusicAlbum_Genre/genre'
-require_relative './helper'
 
 class App
   attr_accessor :books, :labels, :games, :authors, :genres, :music_albums
@@ -21,7 +20,6 @@ class App
   def add_book
     author = create_author
     label = create_label('Book')
-    genre = create_genre('Book\'s')
 
     publisher = get_user_input('Who is the publisher?: ')
     date = get_user_input('What is the year of publication?: ')
@@ -29,12 +27,10 @@ class App
 
     book = Book.new(publisher, date, cover_state)
     label.add_item(book)
-    genre.add_item(book)
     author.add_item(book)
 
     @books.push(book)
     @labels.push(label)
-    @genres.push(genre)
     @authors.push(author)
 
     puts ''
@@ -161,12 +157,6 @@ class App
   def get_user_input(message)
     print message
     gets.chomp
-  end
-
-  def create_genre(item_type)
-    print "#{item_type} genre: "
-    genre_name = gets.chomp
-    Genre.new(genre_name)
   end
 
   def create_author

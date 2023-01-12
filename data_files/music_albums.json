@@ -1,1 +1,23 @@
-[{"id":704,"publish_date":"2022","name":"Strings","on_spotify":true,"archived":false,"genre":{"id":486,"name":"Pop"}},{"id":825,"publish_date":"2005","name":"Longs","on_spotify":false,"archived":false,"genre":{"id":911,"name":"Hiphop"}},{"id":862,"publish_date":"2010","name":"Doom","on_spotify":true,"archived":false,"genre":{"id":215,"name":"Folk"}},{"id":581,"publish_date":"2019","name":"Puma","on_spotify":true,"archived":false,"genre":{"id":165,"name":"Remix"}}]
+[
+  {
+    "id": 820,
+    "publish_date": "2022",
+    "name": "Strings",
+    "on_spotify": true,
+    "genre": { "id": 417, "name": "Pop" }
+  },
+  {
+    "id": 358,
+    "publish_date": "2005",
+    "name": "Longs",
+    "on_spotify": false,
+    "genre": { "id": 410, "name": "Hiphop" }
+  },
+  {
+    "id": 271,
+    "publish_date": "2010",
+    "name": "Doom",
+    "on_spotify": true,
+    "genre": { "id": 193, "name": "Folk" }
+  }
+]

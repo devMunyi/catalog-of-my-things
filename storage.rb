@@ -46,11 +46,9 @@ class Storage
       new_book = Book.new(book['publisher'], book['date'], book['cover_state'])
       new_label = Label.new(book['label']['title'], book['label']['color'])
       new_author = Author.new(book['author']['first_name'], book['author']['last_name'])
-      new_genre = Genre.new(book['genre']['name'])
 
       new_book.label = new_label
       new_book.author = new_author
-      new_book.genre = new_genre
 
       @app.books.push(new_book)
     end

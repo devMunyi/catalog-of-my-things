@@ -1,1 +1,5 @@
-[{"id":400,"name":"Pop"},{"id":803,"name":"Hiphop"},{"id":439,"name":"Folk"},{"id":672,"name":"Remix"}]
+[
+  { "id": 903, "name": "Pop" },
+  { "id": 869, "name": "Hiphop" },
+  { "id": 670, "name": "Folk" }
+]

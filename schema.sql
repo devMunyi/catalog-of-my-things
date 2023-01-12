@@ -23,10 +23,20 @@ CREATE TABLE music_albums(
 )
 
 -- games Table
+CREATE TABLE games(
+  id SERIAL NOT NULL PRIMARY KEY,
+  multiplayer BOOLEAN NOT NULL,
+  last_Played_at DATE NOT NULL,
+  publish_date DATETIME NOT NULL,
+  archived BOOLEAN NOT NULL DEFAULT false
+);
 
-
-
--- authors
+-- authors Table
+CREATE TABLE authors(
+  id SERIAL NOT NULL PRIMARY KEY,
+  first_name VARCHAR(150) NOT NULL,
+  last_name VARCHAR(150) NOT NULL
+);
 
 
 -- books Table
@@ -34,7 +44,6 @@ CREATE TABLE books(
   id SERIAL NOT NULL PRIMARY KEY,
   author_id INT NULL REFERENCES authors(id) ON DELETE CASCADE,
   label_id INT NULL REFERENCES labels(id) ON DELETE CASCADE,
-  genre_id INT NULL REFERENCES genres(id) ON DELETE CASCADE,
   publisher VARCHAR(255) NOT NULL,
   publication_date DATE NOT NULL,
   cover_state VARCHAR(100) NOT NULL,
