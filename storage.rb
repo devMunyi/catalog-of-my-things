@@ -33,15 +33,15 @@ class Storage
   def save_books
     return if @app.books.empty?
 
-    books = @app.books.map(&:as_json)
-    File.write('./data_files/books.json', JSON.dump(books))
+    books_json = @app.books.map(&:as_json)
+    File.write('./data_files/books.json', JSON.dump(books_json))
   end
 
   def load_books
-    targe_file = './data_files/books.json'
-    return unless File.exist?(targe_file)
+    target_file = './data_files/books.json'
+    return unless File.exist?(target_file)
 
-    books = JSON.parse(File.read(targe_file))
+    books = JSON.parse(File.read(target_file))
     books.each do |book|
       new_book = Book.new(book['publisher'], book['date'], book['cover_state'])
       new_label = Label.new(book['label']['title'], book['label']['color'])
@@ -59,8 +59,8 @@ class Storage
   def save_labels
     return if @app.labels.empty?
 
-    labels = @app.labels.map(&:as_json)
-    File.write('./data_files/labels.json', JSON.dump(labels))
+    labels_json = @app.labels.map(&:as_json)
+    File.write('./data_files/labels.json', JSON.dump(labels_json))
   end
 
   def load_labels

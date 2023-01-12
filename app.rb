@@ -4,6 +4,7 @@ require_relative './Game_Author/game'
 require_relative './Game_Author/author'
 require_relative './MusicAlbum_Genre/music_album'
 require_relative './MusicAlbum_Genre/genre'
+require_relative './helper'
 
 class App
   attr_accessor :books, :labels, :games, :authors, :genres, :music_albums
@@ -17,15 +18,10 @@ class App
     @music_albums = []
   end
 
-  def get_user_input(message)
-    print message
-    gets.chomp
-  end
-
   def add_book
-    author = add_author
-    label = add_label('Book')
-    genre = add_genre('Book\'s')
+    author = create_author
+    label = create_label('Book')
+    genre = create_genre('Book\'s')
 
     publisher = get_user_input('Who is the publisher?: ')
     date = get_user_input('What is the year of publication?: ')
@@ -43,26 +39,6 @@ class App
 
     puts ''
     puts "Book #{label.title} by #{author.first_name} #{author.last_name} was created successfully"
-  end
-
-  def add_genre(item_type)
-    print "#{item_type} genre: "
-    genre_name = gets.chomp
-    Genre.new(genre_name)
-  end
-
-  def add_author
-    first_name = get_user_input('Enter Author\'s first name: ')
-    last_name = get_user_input('Enter Author\'s last name: ')
-    Author.new(first_name, last_name)
-  end
-
-  def add_label(item_type)
-    print "Title of the #{item_type}: "
-    title = gets.chomp
-    print "Color of the #{item_type}: "
-    color = gets.chomp
-    Label.new(title, color)
   end
 
   def list_books
@@ -144,11 +120,6 @@ class App
     end
   end
 
-  def get_user_input(message)
-    print message
-    gets.chomp
-  end
-
   def add_author
     first_name = get_user_input('Enter Author\'s first name: ')
     last_name = get_user_input('Enter Author\'s last name: ')
@@ -181,5 +152,30 @@ class App
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games << game
     puts 'Game Added Successfully'
+  end
+
+  def get_user_input(message)
+    print message
+    gets.chomp
+  end
+
+  def create_genre(item_type)
+    print "#{item_type} genre: "
+    genre_name = gets.chomp
+    Genre.new(genre_name)
+  end
+
+  def create_author
+    first_name = get_user_input('Enter Author\'s first name: ')
+    last_name = get_user_input('Enter Author\'s last name: ')
+    Author.new(first_name, last_name)
+  end
+
+  def create_label(item_type)
+    print "Title of the #{item_type}: "
+    title = gets.chomp
+    print "Color of the #{item_type}: "
+    color = gets.chomp
+    Label.new(title, color)
   end
 end
